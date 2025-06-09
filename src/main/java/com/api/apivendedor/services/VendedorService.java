@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
-
+    
 @Service
 public class VendedorService {
 
@@ -15,14 +15,14 @@ public class VendedorService {
     private VendedorRepository vendedorRepository;
 
     private VendedorDTO toDTO(Vendedor vendedor) {
-        return new VendedorDTO(
-            vendedor.getIdVendedor(),
-            vendedor.getNombre(),
-            vendedor.getApellido(),
-            vendedor.getSucursalAsignada(),
-            vendedor.getMeta(),
-            vendedor.isMetaCumplida()
-        );
+        VendedorDTO vendedorDTO = new VendedorDTO();
+        vendedorDTO.setIdVendedor(vendedor.getIdVendedor());
+        vendedorDTO.setNombre(vendedor.getNombre());
+        vendedorDTO.setApellido(vendedor.getApellido());
+        vendedorDTO.setSucursalAsignada(vendedor.getSucursalAsignada());
+        vendedorDTO.setMeta(vendedor.getMeta());
+        vendedorDTO.setMetaCumplida(vendedor.isMetaCumplida());
+        return vendedorDTO;
     }
 
     private Vendedor toEntity(VendedorDTO vendedorDTO) {
